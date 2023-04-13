@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html><head> <meta charset="UTF-8">
+   <title>CIT Majors</title>
+</head>
+
+<body style='margin-left: 30px;'>
+   <h1>Select a Major</h1>
+      <p>We filter our dataset by major</p>
+
+      <input type="button" id='btn' value="CIT Majors">
+      <input type="button" id='btn' value="Business Majors">
+      <div id="result"></div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {     
+
+   document.querySelector('#btn').onclick = async function(){
+       var response = await fetch('cit5students.json');        
+
+       if(response.ok) {
+            var data = await response.json();         
+
+            var tableContents = "<table cellspacing='5'>"     
+            tableContents += "<tr><td>CIT Majors</td><td>Business Majors</td></tr>";
+
+            for(i = 0; i < data.length; i++) {
+                tableContents += `<tr><td> ${data[i].name} </td>
+                       <td> ${data[i].CIT Majors} </td>    
+                       <td> ${data[i].Business Majors} </td></tr>`;
+            }
+
+            tableContents += "</table>";
+            document.querySelector('#result').innerHTML = tableContents;
+       }
+       else {
+            document.querySelector('#result').innerHTML = "Data not found";
+       }
+   };
+
+});
+</script>
+
+</body>
+</html>
