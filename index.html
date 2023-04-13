@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var data = await response.json();         
 
             var tableContents = "<table cellspacing='5'>"     
-            tableContents += "<tr><td>CIT Majors</td><td>Midterm</td><td>Business Majors</td></tr>";
+            tableContents += "<tr><td>CIT Majors</td><td>Business Majors</td></tr>";
 
             for(i = 0; i < data.length; i++) {
                 tableContents += `<tr><td> ${data[i].name} </td>
